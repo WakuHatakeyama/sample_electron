@@ -4,14 +4,16 @@ function hello_python(){
 
     let options = {
         mode: 'text',
-        pythonPath: 'C:/Users/info/Anaconda3/python.exe',
+        pythonPath: 'C:/Anaconda3/envs/electron/python.exe', //Custom on your environment
         scriptPath: './python/'
     };
 
-    let pyshell = new PythonShell('hello.py', options)
+    let pyshell = new PythonShell('hello.py', options);
+    let discription = document.getElementById('sample');
 
     pyshell.on('message', function(message){
         console.log(message);
+        discription.textContent = message;
     });
 
     pyshell.end(function(err, code, signal){
